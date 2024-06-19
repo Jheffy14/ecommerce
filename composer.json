@@ -8,8 +8,10 @@
     ],
     "require": {
     	"phpmailer/phpmailer":"5.2.22",
-    	"slim/slim":"2.0",
-    	"rain/raintpl":"3.0.0"
+    	"slim/slim":"4.0",
+    	"rain/raintpl":"3.0.0",
+         "slim/psr7": "^1.4",
+        "nyholm/psr7": "^1.4"
     },
     "autoload": {
         "psr-4": {
@@ -17,3 +19,4 @@
         }
     }
 }
+
