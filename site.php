@@ -25,12 +25,37 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 	$pagination = $category->getProductsPage($page);
 
+	$pages = [];
+
+	for ($i=11; $i <=$pagination['pages']; $i++ ) { 
+		array_push($pages,[
+			'link'=>'/categories/'.$category->getidcategory().'?page='.$i,
+			'page'=>$i
+		]);
+	}
+
 	$page = new page();
 
 	$page->setTpl("category",[
 		'category'=>$category->getValues(),
-		'products'=>
+		'products'=>$pagination["data"],
+		'pages'=>$pages
 	]);
 }); 
+
+$app->get("/produtcs/ :desurl", function($desurl){
+
+	$produtc = new Produtc();
+
+	$produtc->getFromUrl($desurl);
+
+	$page = new Page();
+
+	$page->setTpl("Produtc-detail",[
+		'Produtc'=>$product->getValues(),
+		'categories'=>$product->getCategories()
+	]);
+
+});
 
  ?>
