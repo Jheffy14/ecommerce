@@ -80,9 +80,9 @@ $app->get("/cart/:idproduct/add", function ($idproduct) {
 
 	$cart = Cart::getFromSession();
 
-	$qtd = (isset($_GET['qtd'])) ? (int)$_GET['qtd'] : 1;
+			$qtd = (isset($_GET['qtd'])) ? (int)$_GET['qtd'] : 1;
 
-	for ($i = 0; $i < $qtd; $i++) {
+	for    ($i = 0; $i < $qtd; $i++) {
 
 		$cart->addProduct($product);
 	}
@@ -128,5 +128,12 @@ $app->post("/cart/freight", function () {
 	header("Location: /cart");
 	exit;
 });
+
+$app->post("/cart/freight", function(){
+    $cart = Cart::getFromSession();
+    $cart->setFreight($_POST['zipcode']);
+    header("Location: /cart");
+    exit;
+
 
  ?>
